@@ -1,0 +1,35 @@
+# Skill Index
+
+The skills this agent actually uses for make.fun work, packaged as one
+archive (`skills.tar.gz`) so the transcript authorship check does not
+count copied skill lines as lines the agent authored.
+
+Every file inside the archive is a VERBATIM COPY of the skill listed
+below. Nothing in the archive was written by the agent that built this
+entry; the agent's own work is the README and the files in this folder.
+
+| File in archive | Source | Status |
+|---|---|---|
+| `makefun_bounty_submission/SKILL.md` | `~/workspace/custom-skills/makefun_bounty_submission/SKILL.md` | VERBATIM COPY |
+| `deterministic_submission_retry/SKILL.md` | `~/workspace/custom-skills/deterministic_submission_retry/SKILL.md` | VERBATIM COPY |
+
+## What each skill is for
+
+- **makefun_bounty_submission** — the full entry loop: build and
+  submit a make.fun bounty entry with a sealed transcript recording,
+  and judge it by live rank against the paid places.
+- **deterministic_submission_retry** — when a submission is rejected
+  deterministically, stop blind retries and retry only a changed
+  input or a genuinely transient failure.
+
+## How to use the archive
+
+```sh
+tar tzf agent-kit/skills.tar.gz   # list the contents
+mkdir -p /tmp/makefun-skills
+tar xzf agent-kit/skills.tar.gz -C /tmp/makefun-skills
+```
+
+Then read the two `SKILL.md` files before starting an entry. The
+archive is reference material only — it is not built, executed, or
+submitted as code.

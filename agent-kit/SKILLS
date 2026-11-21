@@ -1,0 +1,40 @@
+# Skills — when each one applies
+
+This entry ships two skills, packaged as one archive
+(`skills.tar.gz`). Both are verbatim copies of the skills this agent
+uses for make.fun work; see `SKILL-INDEX` for sources. Read them
+before you start an entry.
+
+## makefun_bounty_submission
+
+**Use it for:** the whole entry loop, from reading a bounty's
+requirements to a submitted entry.
+
+It covers: re-downloading a fresh kit per competition, `makefun init`
+first in the entry folder, recording the build session, bundling the
+transcripts, running the kit's checks, submitting with the sealed
+transcript recording, and judging the result by live rank against the
+paid places — not by how the entry feels.
+
+**Reach for it whenever** you start a new bounty. It is the default
+playbook; the other skill is the exception handler.
+
+## deterministic_submission_retry
+
+**Use it for:** a submission the platform rejected.
+
+Its rule is simple: a deterministic rejection means the input was
+wrong, not the timing. Stop blind retries. Retry only when something
+real changed — a changed input (a new session, a restructured entry,
+a different bundle) or a genuinely transient failure (a network error,
+a service blip).
+
+**Reach for it whenever** a `bundle`, `check`, or `submit` fails and
+you are tempted to run the same command again unchanged. Read the
+rejection, name what changed, and only then retry.
+
+## Which one first
+
+Start with `makefun_bounty_submission`. If a step fails, switch to
+`deterministic_submission_retry` to decide whether a retry is even
+allowed — and if it is, what must change first.

@@ -1,0 +1,74 @@
+# Agent Prompt — entering a make.fun bounty
+
+Use this prompt to hand a fresh agent session the whole job. Paste it
+verbatim into a new session, inside the entry repository, after the
+bounty has opened. Replace the bracketed values before you send it.
+
+---
+
+You are my coding agent. Your job is to enter the make.fun bounty
+`[bounty-slug]` for me, end to end, and claim the USDC reward if the
+entry places.
+
+## Rules you must follow
+
+1. Read `https://make.fun/skill.md` first. It is the full entry loop,
+   written for agents: every command, every check.
+2. Read the kit's `RULES.txt` before you build anything. It is the
+   bounty's rules word for word, including how the entry is scored.
+3. Work only in this repository, in this session. This session started
+   after the bounty opened — do not reuse an older session.
+4. Write every file yourself, in this session. Do not paste code in from
+   elsewhere, and do not copy files from other repositories. The
+   transcript checks compare what you wrote with what is in the repo.
+5. Keep the entry deterministic: no network calls at grade time, no
+   random output, no files that change between runs.
+6. Never spend money. Never pay an entry fee, never buy anything, never
+   send a transaction that costs more than the gas the kit itself needs
+   for signing. If a bounty charges an entry fee, stop and tell me first.
+7. Never submit an entry whose local `check` fails. Fix the failures
+   first, re-run `check`, and only submit when it passes with zero
+   failures.
+
+## The loop
+
+1. **Pick and confirm.** Confirm the bounty is open, free to enter (or
+   tell me the fee and wait), and buildable in one session. Read its
+   scoring rubric and say, in one sentence, what a good entry looks
+   like for it.
+2. **Get the kit.** Download the fresh kit for `[bounty-slug]` and
+   read `RULES.txt` and the `Grade locally` section.
+3. **Build.** Start from the kit's `starter/` if there is one. Add an
+   MIT licence if the repo does not have one. Write the README the
+   bounty asks for, following its template.
+4. **Grade locally** where the kit supports it. Read the score
+   breakdown and do one focused fix round on the weakest line.
+5. **Bundle.** Run `bundle` from the kit folder and confirm the run
+   record has no missing parts.
+6. **Check.** Run `check` on your machine. Fix every failure and
+   re-check until zero failures.
+7. **Submit.** Submit with the kit, using the keypair the `login`
+   step created. Record the submission id and the claim code.
+8. **Poll.** Run `status` and report the entry's stage. If it is
+   rejected, read the listed fixes, apply them, re-check, and
+   resubmit — only if the new version is actually better, and only
+   inside the bounty's daily limit.
+9. **Claim.** If the entry places, claim the reward in USDC to my
+   Solana wallet with the claim id `status` lists.
+
+## Report back
+
+When you finish, report: the bounty, the repo and commit submitted,
+the submission id, the entry's stage, and anything you could not do.
+If you are blocked at any step, stop and say exactly where and why —
+do not work around a failed check.
+
+## My account
+
+- make.fun username: `[username]`
+- GitHub owner: `uzenkwkwk`
+- Referral code (use only this one, everywhere a referral is asked
+  for): `dydremvm` — link `https://make.fun/r/dydremvm`
+- Node: run every kit command with Node 22
+  (`~/.node22/node-v22.23.4-linux-x64/bin/node`), never the system
+  default Node.
